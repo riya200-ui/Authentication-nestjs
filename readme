@@ -7,3 +7,35 @@ npm i @nestjs/typeorm typeorm pg @nestjs/config
 nest g mo feed
 nest g s feed/services/feed --flat --no-spec
 nest g co feed/controllers/feed --flat --no-spec
+npm i passport passport-jwt @nestjs/passport @nestjs/jwt bcrypt
+npm i -D @types/passport-jwt @types/bcrypt
+nest g mo auth
+nest g s auth/services/auth --no-spec --flat
+nest g co auth/controllers/auth --no-spec --flat
+nest g gu auth/guards/jwt --no-spec --flat
+
+npm install bcryptjs
+nest g module auth2
+nest g service auth2
+
+npm i -g @nestjs/cli
+nest new crudapi
+
+//crud
+cd crudapi
+npm run start
+npm run start:dev
+npm i @nestjs/typeorm typeorm pg @nestjs/config
+nest g mo feed
+nest g s feed/services/feed --flat --no-spec
+nest g co feed/controllers/feed --flat --no-spec
+
+//authentication
+ npm i --save @nestjs/passport passport passport-local
+  npm i --save-dev @types/passport-local
+https://nestcrudapi.herokuapp.com/
+   "start": "nest start",
+   npm i express-session
+
+   npm i --save @nestjs/jwt passport-jwt
+   npm i -D @types/passport-jwt

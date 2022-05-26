@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
@@ -12,12 +13,20 @@ export class FeedService {
     private readonly feedPostRepository: Repository<FeedPostEntity>,
   ) {}
 
-  createPost( feedPost: FeedPost): Observable<FeedPost> {
+  createPost(feedPost: FeedPost): Observable<FeedPost> {
     return from(this.feedPostRepository.save(feedPost));
   }
 
   findAllPosts(): Observable<FeedPost[]> {
     return from(this.feedPostRepository.find());
+  }
+
+    findPosts(take = 10, skip = 0): Observable<FeedPost[]> {
+    return from(
+      this.feedPostRepository.findAndCount({ take, skip }).then(([posts]) => {
+        return <FeedPost[]>posts;
+      }),
+    );
   }
 
   updatePost(id: number, feedPost: FeedPost): Observable<UpdateResult> {
